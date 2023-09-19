@@ -1,0 +1,24 @@
+In this assignment you will write a function that prints the lyrics to a children's song. Here's the song:
+
+You'll write OCaml code to generate and print the lyrics for a given number of ducks, by constructing a list of strings for each part of the song. In order to structure your code, it's best to write separate functions with the respective types for the following tasks:
+generate_duck_helper function - this function is called by the generate_duck_verse function which will return a list of strings while accounting for the correct number of ducks in the verse. Where each element of the list accounts for a stanza in the verse. Overall, there are four cases that you need to account for:For n > 2 ducks, you have "n little ducks went swimming one day .... And (n-1) little ducks came back"For n = 2 ducks, you have "2 little ducks went swimming one day .... And 1 little duck came back"For n = 1 duck, you have "1 little duck went swimming one day... And then no more ducks came back"For n = 0 ducks, you have the Mama Duck stanzaHere is the function type:helper : int -> int -> string list = <fun>
+generate_duck_verse function - this is the function that is called to generate the verse.generate_duck_verse : int -> string = <fun>
+print_duck_verse function - this function is called to print the generated verse. Call the generate_duck_verse function internally and print it out.print_duck_verse : int -> unit = <fun>
+Please save these functions in a file named hw1.ml for your submission. Also, make sure the three functions mentioned above are present and have their corresponding types. However, feel free to create your own additional functions in order to effectively come to a solution.  
+**********************************************************************************************************************************Here are some examples of the verse you will generate:
+Example 1 - print_duck_verse 2;;
+2 little ducks went swimming one dayOver the hills and far awayThe mama duck said, "Quack, quack, quack, quack"And only 1 little duck came back
+1 little duck went swimming one dayOver the hills and far awayThe mama duck said, "Quack, quack, quack, quack"And then no more little ducks came back
+Mama duck went swimming one dayOver the hills and far awayThe mama duck said, "Quack, quack, quack, quack"And all 2 little ducks came back
+************************************************************************************************************************************
+Please find the expected output for (print_duck_verse 1;;) below:
+1 little duck went swimming one day Over the hills and far away The mama duck said, "Quack, quack, quack, quack"And then no more little ducks came back
+Mama duck went swimming one day Over the hills and far away The mama duck said, "Quack, quack, quack, quack"And all 1 little duck came back
+************************************************************************************************************************************
+Example 2 - print_duck_verse 5;; see the lyrics at the top.
+5 little ducks went swimming one dayOver the hills and far awayThe mama duck said, "Quack, quack, quack, quack"And only 4 little ducks came back
+4 little ducks went swimming one dayOver the hills and far awayThe mama duck said, "Quack, quack, quack, quack"And only 3 little ducks came back
+3 little ducks went swimming one dayOver the hills and far awayThe mama duck said, "Quack, quack, quack, quack"And only 2 little ducks came back
+2 little ducks went swimming one dayOver the hills and far awayThe mama duck said, "Quack, quack, quack, quack"And only 1 little duck came back
+1 little duck went swimming one dayOver the hills and far awayThe mama duck said, "Quack, quack, quack, quack"And then no more little ducks came back
+Mama duck went swimming one dayOver the hills and far awayThe mama duck said, "Quack, quack, quack, quack"And all 5 little ducks came back
