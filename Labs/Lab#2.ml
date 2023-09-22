@@ -31,7 +31,7 @@ let rec eval (e: exercise) : int option =
 	| Div (e1, e2) ->  divide_lifted (eval e1) (eval e2)
     | _ -> None
 
-
+    (* assert (string_of_exercise (Add (Int 3, Int 4)) = "(3 + 4)"); *)
 let rec string_of_exercise (e: exercise) : string =
     match e with
         | Int i -> string_of_int i 
