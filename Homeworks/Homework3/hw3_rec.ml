@@ -16,22 +16,23 @@
           else leftover_count t (counter -1)  
 
 let rec last_card lst counter : int = 
-match (lst, counter) with
-|([], counter) -> counter
-|(lst, 0) -> if(lst <>[] && List.length lst > 0) then last_card lst (List.hd lst) 
-else 0 
-|((h:: t), counter) ->
-  if (counter > List.length t && counter=0) then -1
-  else if (counter > List.length t && counter!=0) then h 
-  else if(counter > List.length t && h<counter) then 242
-  else last_card t (counter -1)
+    match (lst, counter) with
+    |([], counter) -> counter
+    |(lst, 0) -> if(lst <>[] && List.length lst > 0) then last_card lst (List.hd lst) 
+    else 0 
+    |((h:: t), counter) ->
+      if (counter > List.length t && counter=0) then -1
+      else if(counter > List.length t && counter!=0 && List.length t ==1 ) then -1
+      else if (counter > List.length t && counter!=0 ) then h 
+      else if(counter > List.length t && h<counter) then 242
+      else last_card t (counter -1)
  
-  
-  
-  
- 
+  (*
 
+  last_card [1;4] 5;;
+      && List.length t !=1
 
+  *)
 let run_last_card_test () =
   assert(last_card [1;4] 5 = -1);
   assert(last_card [1;4] 1 = 4); 
