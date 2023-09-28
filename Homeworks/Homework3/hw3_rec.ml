@@ -1,7 +1,7 @@
 (* optional recursion 90%*)
 
 (* 29.7*)
-let rec leftover_count lst counter : int=
+ let rec leftover_count lst counter : int=
   match (lst, counter) with
   | ([], counter) -> counter
   | (lst, 0) -> 
@@ -15,30 +15,27 @@ let rec leftover_count lst counter : int=
           if counter != 0 then leftover_count t (counter-1)
           else leftover_count t (counter -1)  
 
-(* let list_size_bool lst x : bool=
-  if x > List.length lst then true
-  else false *)
-
-let rec last_card lst c : int = (* counter reset = last index.   counter > list.length -> -1*)
-match (lst, c) with
+let rec last_card lst counter : int = 
+match (lst, counter) with
+|([], counter) -> counter
+|(lst, 0) -> if(lst <>[] && List.length lst > 0) then last_card lst (List.hd lst) 
+else 0 
+|((h:: t), counter) ->
+  if (counter > List.length t && counter=0) then -1
+  else if (counter > List.length t && counter!=0) then h 
+  else if(counter > List.length t && h<counter) then 242
+  else last_card t (counter -1)
+ 
   
-  | ([], c) -> c
-  | (lst, 0) -> List.hd lst
-  (* | (lst, c) -> if List.length lst < c then -1 else last_card lst (c-1) *)
-  | (h :: t, c) -> if List.length lst < c then -1
-                 else if (c != 0) then last_card t (c-1)
-                 else if (c < List.length lst) then h
-                 else
-                  (* if (c=1) then *)
-                     h
-               
+  
+  
+ 
 
-   
 
 let run_last_card_test () =
   assert(last_card [1;4] 5 = -1);
-  assert(last_card [1;4] 1 = 4);
-  (* assert(last_card [1;4;2;10;3;5;7;11] 1 = 5); *)
+  assert(last_card [1;4] 1 = 4); 
+  assert(last_card [1;4;2;10;3;5;7;11] 1 = 5);
   assert(last_card [1;4;2;10;3;5;7;11] 3 = 10);
   assert(last_card [1;4;2;10;3;5;7;11] 7 = 11);
   print_endline "All run_last_card_test passed!" 
