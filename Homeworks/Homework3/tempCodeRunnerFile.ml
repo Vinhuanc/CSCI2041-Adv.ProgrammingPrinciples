@@ -1,1 +1,1 @@
-  (* | ([], 0) -> leftover_count lst (List.hd lst)
+assert(last_card [1;4;2;10;3;5;7;11] 1 = 5);
