@@ -1,0 +1,644 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2709
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fswiss\fcharset0 Helvetica-Bold;\f2\fnil\fcharset0 HelveticaNeue-Bold;
+\f3\fnil\fcharset0 HelveticaNeue;}
+{\colortbl;\red255\green255\blue255;\red255\green255\blue255;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c100000\c100000\c100000;\cssrgb\c0\c0\c0;}
+\margl1440\margr1440\vieww22160\viewh19080\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx16047\pardirnatural\partightenfactor0
+
+\f0\fs32 \cf0 												
+\f1\b Chapter 4: Higher-Order Programming\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 											\
+
+\f1\b \ul 4.1. Higher-Order Functions\
+
+\f0\b0 \ulnone \
+\ul 4.1.1 The Abstraction Principle\
+\ulnone High-order functions: calling own function as an argument. Refactor out functions and parameters functions on other functions\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\fs24 \cf0 {{\NeXTGraphic Screenshot 2023-09-19 at 9.38.11 AM.png \width3820 \height760 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\fs32 \cf0            
+\fs24 {{\NeXTGraphic Screenshot 2023-09-19 at 9.38.16 AM.png \width5060 \height780 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}
+\fs32 \
+\
+Abstraction Principle: statements to avoid requiring something to be stated more than once. Instead, factor out the recurring pattern\
+Pipeline: the pipeline operator is a higher-order function\
+ 
+\fs24 {{\NeXTGraphic Screenshot 2023-09-19 at 9.45.00 AM.png \width3020 \height880 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}
+\fs32         
+\fs24 {{\NeXTGraphic Screenshot 2023-09-19 at 9.44.31 AM.png \width4560 \height860 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}
+\fs32   example of pipeline function\
+\
+
+\fs24 {{\NeXTGraphic Screenshot 2023-09-19 at 9.46.05 AM.png \width4040 \height1340 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}
+\fs32  textbook example. X : int = 10\
+\
+\ul Compose\ulnone : we can write a function that composes two other functions\
+
+\fs24 {{\NeXTGraphic Screenshot 2023-09-19 at 9.54.44 AM.png \width6760 \height1860 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}
+\fs32  the compose function contains two other functions, it executes the parameter a & b, then have the result executed as a\'92s parameter. Similar to Calculus f(g(n)), passing n for g(n) first, then use the result to pass into f(n). For this equation, the square_then_double executes the square function, then the double function.    
+\fs24 {{\NeXTGraphic Screenshot 2023-09-19 at 9.57.38 AM.png \width6240 \height680 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}
+\fs32 \
+\
+\ul Both\ulnone : write a function that applies two functions to the same argument and returns a pair as the result\
+
+\fs24 {{\NeXTGraphic Screenshot 2023-09-19 at 10.01.50 AM.png \width4140 \height1840 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}
+\fs32   can see f=double function, g=square function, and x=passed in parameter to execute all the functions.\
+
+\fs24 {{\NeXTGraphic Screenshot 2023-09-19 at 10.06.08 AM.png \width4940 \height660 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}
+\fs32  the result will return (10, 25) as a pair of points\
+\
+\ul Cond: write a function that conditionally chooses which of the two functions to apply based on a predicate\
+
+\fs24 \ulnone {{\NeXTGraphic Screenshot 2023-09-19 at 10.08.48 AM.png \width4020 \height720 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}
+\fs32  switch to different functions depending on a predicate syntax/example\
+\
+
+\f1\b \ul 4.1.2 The Meaning of \'93Higher Order\'94\
+
+\f0\b0 \ulnone Higher order: used throughout logical and computer science\
+First order: quantification refers to primarily to the universal and existential quantifiers. Allows programmers to quantify over interested domains. Functions that operate on individual data elements \
+Second order: allows more power, quantify over properties of the domain. Assertions about individual elements\
+Third order: quantification over properties of properties\
+Fourth order: properties of properties of properties, and so fourth\
+High order: refers to all these logical that are more powerful than first order logic, logic can be expressed in second order logic. Operate on functions \
+\
+
+\f1\b \ul 4.1.3 Famous Higher-order Functions\
+
+\f0\b0 \ulnone - map: transforms elements\
+- filter: eliminates elements\
+- fold: combines elements\
+\
+
+\f1\b \ul 4.2 Map\
+
+\f0\b0 \ulnone Map: allows programmers to individually transform each element of a list
+\f1\b \ul \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b0\fs24 \cf0 \ulnone {{\NeXTGraphic Screenshot 2023-09-19 at 9.05.24 PM.png \width7640 \height2080 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2023-09-19 at 9.05.31 PM.png \width5200 \height660 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b\fs32 \cf0  
+\f0\b0 add1 function using simple recursions(version #1)\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 {{\NeXTGraphic Screenshot 2023-09-19 at 9.06.14 PM.png \width10200 \height2080 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2023-09-19 at 9.06.24 PM.png \width7480 \height660 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs32 \cf0  concatenate strings with \'93!\'94 using simple recursions(version #1)
+\f1\b \ul \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \ulc0  \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b0\fs24 \cf0 \ulnone {{\NeXTGraphic Screenshot 2023-09-19 at 9.07.38 PM.png \width10280 \height4320 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs32 \cf0  (version #2): rewriting the two functions to make the difference more explicit\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 {{\NeXTGraphic Screenshot 2023-09-19 at 9.09.18 PM.png \width10240 \height4220 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs32 \cf0  (version #3): abstracting the one helper function from the main function and creating an argument\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \ul \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b0\fs24 \cf0 \ulnone {{\NeXTGraphic Screenshot 2023-09-19 at 9.10.25 PM.png \width10140 \height3000 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs32 \cf0 (version #4): transform method by apply a function to each element of the list\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \ul \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b0\fs24 \cf0 \ulnone {{\NeXTGraphic Screenshot 2023-09-19 at 9.14.50 PM.png \width10180 \height2900 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs32 \cf0 (version #5): final change, using the function word name of \'93map\'94\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \ul 4.2.1 Side Effects\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b0\fs24 \cf0 \ulnone {{\NeXTGraphic Screenshot 2023-09-19 at 9.28.57 PM.png \width7600 \height6100 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b\fs32 \cf0  
+\f0\b0 used a let expression to cause the evaluation of the function application to occur before the recursive call
+\f1\b \ul \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+\
+4.2.2 Map and Tail Recursion\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b0\fs24 \cf0 \ulnone {{\NeXTGraphic Screenshot 2023-09-20 at 6.07.20 AM.png \width7060 \height2340 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b\fs32 \cf0  
+\f0\b0 recursive map function that takes in user\'92s input function, loop through the array to add 1
+\f1\b \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b0\fs24 \cf0 {{\NeXTGraphic Screenshot 2023-09-20 at 6.07.25 AM.png \width4880 \height680 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b\fs32 \cf0  
+\f0\b0 output of the function above, standard library called this function List.rev_map, that returns the outputs in reverse order
+\f1\b \ul \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b0\fs24 \cf0 \ulnone {{\NeXTGraphic Screenshot 2023-09-20 at 6.09.12 AM.png \width9300 \height1400 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b\fs32 \cf0  
+\f0\b0 Use the List.rev library function to print the output in the \'93right\'94 order, reverse output
+\f1\b \ul \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+\
+4.2.3 Map in Other Languages\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b0\fs24 \cf0 \ulnone {{\NeXTGraphic Screenshot 2023-09-20 at 6.11.58 AM.png \width7640 \height840 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b\fs32 \cf0  
+\f0\b0 Python example\ul \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b0\fs24 \cf0 \ulnone {{\NeXTGraphic Screenshot 2023-09-20 at 6.12.14 AM.png \width11480 \height860 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b\fs32 \cf0  
+\f0\b0 Java example
+\f1\b \ul \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+\
+4.3 Filter\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 \ulnone Filter: allows programmers to individually decide whether to keep or throw away each element of a list\ul \
+\ulnone Predicate: a function that returns a boolean\
+Cons: denoted by \'93::\'94, constructs objects in memory, can be seen as \'93 I will cons an element onto the list\'94. OCaml adds an element onto the head of the list\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 {{\NeXTGraphic Screenshot 2023-09-20 at 6.28.15 AM.png \width11180 \height3460 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs32 \cf0  filter only the \ul even\ulnone   numbers from a list\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 {{\NeXTGraphic Screenshot 2023-09-20 at 6.28.20 AM.png \width4840 \height840 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs32 \cf0   function returns only the \ul even\ulnone  elements of the list\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 {{\NeXTGraphic Screenshot 2023-09-20 at 6.29.46 AM.png \width10820 \height3260 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs32 \cf0 filter only the \ul odd\ulnone   numbers from a list\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \ul \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 \ulnone {{\NeXTGraphic Screenshot 2023-09-20 at 6.29.51 AM.png \width4520 \height640 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs32 \cf0 function returns only the \ul odd\ulnone  elements of the list\ul \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 \ulnone {{\NeXTGraphic Screenshot 2023-09-20 at 6.32.07 AM.png \width8940 \height1180 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs32 \cf0   change to map function, using p for predicate( a way of tests whether something is true or false)\ul \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 \ulnone {{\NeXTGraphic Screenshot 2023-09-20 at 6.32.14 AM.png \width3840 \height740 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2023-09-20 at 6.36.00 AM.png \width4300 \height620 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs32 \cf0  filters even numbers using map function\ul \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\b \cf0 4.3.1 Filter and Tail Recursion
+\f0\b0 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 \ulnone {{\NeXTGraphic Screenshot 2023-09-20 at 6.40.20 AM.png \width11480 \height2380 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs32 \cf0  tail-recursive version of filter function \ul \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 \ulnone {{\NeXTGraphic Screenshot 2023-09-20 at 6.40.25 AM.png \width5380 \height680 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs32 \cf0  result of the above function\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \ul \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 \ulnone {{\NeXTGraphic Screenshot 2023-09-20 at 6.40.54 AM.png \width11620 \height1780 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs32 \cf0  add List.rev library function to \'93reverse\'94 the output order\ul \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\b \cf0 4.3.2 Filter in Other Languages \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b0\fs24 \cf0 \ulnone {{\NeXTGraphic Screenshot 2023-09-20 at 6.41.56 AM.png \width9280 \height960 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b\fs32 \cf0  
+\f0\b0 Python
+\f1\b \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \ul \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b0\fs24 \cf0 \ulnone {{\NeXTGraphic Screenshot 2023-09-20 at 6.42.15 AM.png \width12680 \height800 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b\fs32 \cf0  
+\f0\b0 Java\ul \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\b \cf0 4.4 Fold\
+\
+4.4.1 Combine\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 \ulnone Combine: allows programmers to combine all the elements of a list\ul \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 \ulnone {{\NeXTGraphic Screenshot 2023-09-20 at 2.11.48 PM.png \width8160 \height3520 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs32 \cf0  combining elements using init and op, is the essential idea of the library function fold\ul \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 \ulnone {{\NeXTGraphic Screenshot 2023-09-20 at 2.19.39 PM.png \width8980 \height1900 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs32 \cf0  recursive function to sum all of the list example\ul \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 \ulnone {{\NeXTGraphic Screenshot 2023-09-20 at 2.19.45 PM.png \width2760 \height680 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs32 \cf0 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \ul \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 \ulnone {{\NeXTGraphic Screenshot 2023-09-20 at 2.20.35 PM.png \width10800 \height2060 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs32 \cf0  recursive function to concat all of the string elements\ul \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 \ulnone {{\NeXTGraphic Screenshot 2023-09-20 at 2.20.49 PM.png \width3560 \height580 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs32 \cf0 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 {{\NeXTGraphic Screenshot 2023-09-20 at 2.30.12 PM.png \width5960 \height1960 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs32 \cf0  combine function. [] value in the list gets replaced by init, each :: constructor gets replaced by op\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \ul \
+\pard\pardeftab720\sa252\partightenfactor0
+
+\f2 \cf0 \cb2 \expnd0\expndtw0\kerning0
+4.4.2.\'a0Fold Right
+\f3\b0\fs24 \ulnone \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs32 \cf0 \cb1 \kerning1\expnd0\expndtw0 Fold right: folds in values of the list from the right to the left, incorporating & combining them as it goes\
+Accumulator: denoted by \'93acc\'94, the result being accumulated as loop goes along\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 {{\NeXTGraphic Screenshot 2023-09-20 at 2.33.26 PM.png \width8060 \height4320 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs32 \cf0  List.fold_right, does the function from the right, accumulate it, then add it to the left value\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \ul \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 \ulnone {{\NeXTGraphic Screenshot 2023-09-20 at 2.40.32 PM.png \width5800 \height1160 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs32 \cf0  fold_right example: f=function argument, lst=list, acc=accumulator. If the list is empty, then return the accumulator. Otherwise, apply through the fold_right f t acc function for all of t, then add it to the f h value. The reason the head executes last is because folding_right executes the right side, then add the left side, hence \'93folding_right = fold from the right\'94.      (F h = apply function f to value h)\ul \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 ***************************************************************************************\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 \ulnone {{\NeXTGraphic Screenshot 2023-09-20 at 2.46.24 PM.png \width8120 \height4260 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs32 \cf0  List.fold_left, does the function from the left, accumulate it, then add it to the right value. Tail recursive\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \ul \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 \ulnone {{\NeXTGraphic Screenshot 2023-09-20 at 2.54.30 PM.png \width5600 \height1000 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs32 \cf0  fold_left example: f acc h = accumulator including h, then recursively call the fold_left method on all list of t, add it to accumulator\ul \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 \ulnone {{\NeXTGraphic Screenshot 2023-09-20 at 2.56.57 PM.png \width5460 \height4300 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs32 \cf0  left vs. right: folding methods have different results depending on operator\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \ul \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\b \cf0 4.4.3 Tail Recursion and Combine\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 \ulnone {{\NeXTGraphic Screenshot 2023-09-20 at 6.37.18 PM.png \width9660 \height1180 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs32 \cf0  combine function with tail recursive. The function f is applied to the head element h and the accumulator acc before the recursive call is made, there won\'92t be work remaining to be worked on after the call return\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 {{\NeXTGraphic Screenshot 2023-09-20 at 6.43.56 PM.png \width4240 \height1040 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2023-09-20 at 6.44.02 PM.png \width2820 \height360 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs32 \cf0  example of calling the above function\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \ul 4.4.4 Fold Left
+\f0\b0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 \ulnone {{\NeXTGraphic Screenshot 2023-09-20 at 6.46.13 PM.png \width5780 \height1980 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs32 \cf0  combine_tr function is also in the standard library under the name 
+\f1\b List.fold_left\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \ul 4.4.5 Fold Left vs. Fold Right\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 \ulnone Fold_left: proceeds from the left to the right, tail recursive\
+Fold_right: combines from the right to the left\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 {{\NeXTGraphic Screenshot 2023-09-20 at 6.48.46 PM.png \width2960 \height940 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs32 \cf0 \ul \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\b \cf0 4.4.7 Using Fold to implement other functions\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 \ulnone {{\NeXTGraphic Screenshot 2023-09-20 at 6.54.33 PM.png \width10560 \height3680 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs32 \cf0 \ul \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\b \cf0 4.4.8 Fold vs. Recursive vs. Library\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 \ulnone Different ways to write function that manipulate lists:\
+	1) directly use recursive functions that pattern match against empty list and agains cons\
+	2) use fold functions\
+	3) use other library functions\ul \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 \ulnone {{\NeXTGraphic Screenshot 2023-09-20 at 6.58.22 PM.png \width8500 \height3060 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs32 \cf0 \ul \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\b \cf0 4.5. Beyond Lists\
+\
+4.5.1. Map on Trees
+\f0\b0 \ulnone \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 {{\NeXTGraphic Screenshot 2023-09-21 at 6.39.20 AM.png \width5320 \height1060 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2023-09-21 at 6.39.41 AM.png \width3800 \height1280 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs32 \cf0  defining a tree and a tree variable\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \ul \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 \ulnone {{\NeXTGraphic Screenshot 2023-09-21 at 6.40.03 AM.png \width6120 \height1540 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs32 \cf0  recursive map function for a tree example. Example: add1 1;;\ul \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 \ulnone {{\NeXTGraphic Screenshot 2023-09-21 at 6.45.28 AM.png \width7000 \height1120 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs32 \cf0  fold method for the recursion tree\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \ul \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 \ulnone {{\NeXTGraphic Screenshot 2023-09-21 at 6.46.33 AM.png \width5500 \height960 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs32 \cf0  sum method for tree. Example: sum t;;\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \ul 4.5.2 Fold on Trees\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 \ulnone \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 {{\NeXTGraphic Screenshot 2023-09-21 at 6.51.22 AM.png \width10120 \height1040 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs32 \cf0  fold function on trees\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 {{\NeXTGraphic Screenshot 2023-09-21 at 6.52.55 AM.png \width9180 \height1140 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs32 \cf0  using fold_tree method to implement tree functions\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \ul 4.5.3. Filter on Trees\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 \ulnone \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 {{\NeXTGraphic Screenshot 2023-09-21 at 6.55.01 AM.png \width11540 \height2640 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs32 \cf0  filter a node on trees, eliminates the children entirely.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \ul 4.6 Pipelining\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b0\fs24 \cf0 \ulnone {{\NeXTGraphic Screenshot 2023-09-26 at 5.19.43 PM.png \width5580 \height1740 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}
+\f1\b\fs32  
+\f0\b0 computing the sum of squares of the numbers from 0 - n example\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 {{\NeXTGraphic Screenshot 2023-09-26 at 5.22.45 PM.png \width9020 \height2600 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs32 \cf0  producing the same results using high-order functions and pipeline operator. First, function constructs a list containing all the elements of 0 \'85 n, then uses the pipeline operator |> to pass that list through List.map square function, then the resulting list is pipelined through sum, which adds all the elements together.\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \ul 4.7 Curring\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b0\fs24 \cf0 \ulnone {{\NeXTGraphic Screenshot 2023-09-26 at 5.29.25 PM.png \width3640 \height560 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b\fs32 \cf0  
+\f0\b0 curried functions, takes two arguments of types t1 and t2. T1 -> t2 -> t3( int -> int -> int)\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 {{\NeXTGraphic Screenshot 2023-09-26 at 5.30.18 PM.png \width4240 \height540 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs32 \cf0 use fst and snd tuple pattern, uncurried functions, takes two arguments of the tuples. T1 * t2 -> t3 (int * int -> int)\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 {{\NeXTGraphic Screenshot 2023-09-26 at 5.33.19 PM.png \width4200 \height700 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs32 \cf0  use tuple pattern, uncurried functions, takes tuple pattern in the function definition. x, y (int * int -> int)\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 {{\NeXTGraphic Screenshot 2023-09-26 at 5.35.38 PM.png \width4400 \height700 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2023-09-26 at 5.35.43 PM.png \width5080 \height760 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs32 \cf0  higher-order functions to do automatic conversions\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \ul \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\b \cf0 Notes:\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 \ulnone Function = match parameter with
+\f1\b \ul \
+
+\f0\b0 \ulnone Fold_right: acc is to the right of the list. (ex: fold_right f lst acc)\
+Fold_left: acc is to the left of the list. (Ex: fold_left acc lst).\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \ul \
+\
+\
+\
+\
+\
+\
+\
+}
