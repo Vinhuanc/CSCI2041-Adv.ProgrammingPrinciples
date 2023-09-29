@@ -14,11 +14,11 @@ let last_card lst x =
       | num -> (counter-1, last)
   ) (x, -1) lst in last
 
-let num_greater_than_sum lst = 
-  let (x, y) = List.fold_left (
-     fun (x, y) h ->
-  if x > h then (x + h, y) else (x + h, y + 1) ) 
-  (0, 0) lst in y
+  let num_greater_than_sum lst = 
+    let (x, y) = List.fold_left (
+       fun (x, y) h ->
+    if h > x then (x + h, y+1) else (x+h, y))
+    (0, 0) lst in y
 
   let test_leftover_count () = 
     assert (leftover_count [] 1 = 1);
@@ -42,6 +42,8 @@ let num_greater_than_sum lst =
     assert ( num_greater_than_sum [1;4;2;10]= 3);
     assert ( num_greater_than_sum [1;-1;2] = 2);
     assert ( num_greater_than_sum [1;4;2;10;3;-5;-7;11] = 4);
+    assert ( num_greater_than_sum [5; -3; 3; 5; 3; -1; 0; 4; -3; 2; 5; -1; -2; 3; -3] = 2);
+
     print_endline "All test_num_greater_than_sum passed!" 
   
   let run_all_tests () = 
