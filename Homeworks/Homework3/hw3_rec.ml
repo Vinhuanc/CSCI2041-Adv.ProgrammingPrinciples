@@ -1,7 +1,5 @@
 (* optional recursion 90%*)
-
-(* 29.7*)
- let rec leftover_count lst counter : int=
+let rec leftover_count lst counter : int=
   match (lst, counter) with
   | ([], counter) -> counter
   | (lst, 0) -> 
@@ -27,13 +25,7 @@ let rec last_card lst counter : int =
       else if(counter > List.length t && h<counter) then 242
       else last_card t (counter -1)
  
-  (*
-
-  last_card [1;4] 5;;
-      && List.length t !=1
-
-  *)
-let run_last_card_test () =
+let test_last_card_test () =
   assert(last_card [1;4] 5 = -1);
   assert(last_card [1;4] 1 = 4); 
   assert(last_card [1;4;2;10;3;5;7;11] 1 = 5);
@@ -43,7 +35,7 @@ let run_last_card_test () =
 
 
 
-(* let test_leftover_count () = 
+let test_leftover_count () = 
   assert (leftover_count [] 1 = 1);
   assert (leftover_count [1;4] 2 = 0);
   assert (leftover_count [1;4] 5= 3);
@@ -51,12 +43,41 @@ let run_last_card_test () =
   assert (leftover_count [1;4;2;10;3;5;7;11] 3= 5);
   assert (leftover_count [1;4;2;10;3;5;7;11] 5= 2 );
   assert (leftover_count [1;4;2;10;3;5;7;11] 7= 10 );
-  print_endline "All leftover_count tests passed!"  *)
+  print_endline "All leftover_count tests passed!" 
 
+
+
+
+
+
+let helper lst sum  : int =
+  let (x, y) = List.fold_left (
+  fun (sum, counter) h ->
+  if sum > h then (sum + h, counter) else (sum + h, counter + 1) ) 
+  (sum, 0) lst in y
+
+
+  let num_greater_than_sum (lst : int list) : int =
+     helper lst 0
+        
+
+
+
+ 
+
+let test_num_greater_than_sum () =
+  assert ( num_greater_than_sum [] = 0);
+  assert ( num_greater_than_sum [1;4;2;10]= 3);
+
+  assert ( num_greater_than_sum [1;-1;2] = 2);
+
+assert ( num_greater_than_sum [1;4;2;10;3;-5;-7;11] = 4);
+print_endline "All test_num_greater_than_sum passed!" 
 
 let run_all_tests () = 
-  (* test_leftover_count (); *)
-  run_last_card_test ();
+  test_leftover_count ();
+  test_last_card_test ();
+  test_num_greater_than_sum ();
   print_endline "All tests passed!" 
 
-  let _ = run_all_tests ()
+  let _ = run_all_tests () 
