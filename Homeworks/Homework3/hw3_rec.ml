@@ -25,15 +25,14 @@ let rec last_card lst counter : int =
       else if(counter > List.length t && h<counter) then 242
       else last_card t (counter -1)
  
-let test_last_card_test () =
-  assert(last_card [1;4] 5 = -1);
-  assert(last_card [1;4] 1 = 4); 
-  assert(last_card [1;4;2;10;3;5;7;11] 1 = 5);
-  assert(last_card [1;4;2;10;3;5;7;11] 3 = 10);
-  assert(last_card [1;4;2;10;3;5;7;11] 7 = 11);
-  print_endline "All run_last_card_test passed!" 
+let helper lst sum  : int =
+  let (x, y) = List.fold_left (
+  fun (sum, counter) h ->
+  if sum > h then (sum + h, counter) else (sum + h, counter + 1) ) 
+  (sum, 0) lst in y
 
-
+let num_greater_than_sum (lst : int list) : int =
+     helper lst 0
 
 let test_leftover_count () = 
   assert (leftover_count [] 1 = 1);
@@ -44,35 +43,20 @@ let test_leftover_count () =
   assert (leftover_count [1;4;2;10;3;5;7;11] 5= 2 );
   assert (leftover_count [1;4;2;10;3;5;7;11] 7= 10 );
   print_endline "All leftover_count tests passed!" 
-
-
-
-
-
-
-let helper lst sum  : int =
-  let (x, y) = List.fold_left (
-  fun (sum, counter) h ->
-  if sum > h then (sum + h, counter) else (sum + h, counter + 1) ) 
-  (sum, 0) lst in y
-
-
-  let num_greater_than_sum (lst : int list) : int =
-     helper lst 0
-        
-
-
-
- 
+let test_last_card_test () =
+  assert(last_card [1;4] 5 = -1);
+  assert(last_card [1;4] 1 = 4); 
+  assert(last_card [1;4;2;10;3;5;7;11] 1 = 5);
+  assert(last_card [1;4;2;10;3;5;7;11] 3 = 10);
+  assert(last_card [1;4;2;10;3;5;7;11] 7 = 11);
+  print_endline "All run_last_card_test passed!" 
 
 let test_num_greater_than_sum () =
   assert ( num_greater_than_sum [] = 0);
   assert ( num_greater_than_sum [1;4;2;10]= 3);
-
   assert ( num_greater_than_sum [1;-1;2] = 2);
-
-assert ( num_greater_than_sum [1;4;2;10;3;-5;-7;11] = 4);
-print_endline "All test_num_greater_than_sum passed!" 
+  assert ( num_greater_than_sum [1;4;2;10;3;-5;-7;11] = 4);
+  print_endline "All test_num_greater_than_sum passed!" 
 
 let run_all_tests () = 
   test_leftover_count ();
@@ -80,4 +64,4 @@ let run_all_tests () =
   test_num_greater_than_sum ();
   print_endline "All tests passed!" 
 
-  let _ = run_all_tests () 
+let _ = run_all_tests () 
