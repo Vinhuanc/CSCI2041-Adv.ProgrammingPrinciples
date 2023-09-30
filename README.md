@@ -9,6 +9,6 @@ Principles/techniques for creating correct, robust, modular programs. Computing 
 ### Textbook
 https://cs3110.github.io/textbook/cover.html
 
-
-
+### Google
+google-site-verification: google6ef58cc49dc1d259.html
 
