@@ -1,5 +1,3 @@
-(* Received 99/100 points.*)
-(* Failed this case: Check `Tree_ops.is_tree_sorted (Node (-1, Leaf, Leaf))`. (0/1) *)
 type tree =
   | Leaf
   | Node of int * tree * tree
@@ -58,19 +56,16 @@ struct
    | Node(n, l, r) -> flatten l @ [n] @ flatten r
 
 
-   (* (-1, Leaf, Leaf) *)
+
  let rec is_tree_sorted t :bool=
-  let tmax_tree = tmax t in
    match t with
       | Leaf -> true
       | Node(x, l, r) -> 
-        let tmax_tree_l = tmax l in (* true*)
-        let tmin_tree_r = tmin r in(* true*)
-        
+        let tmax_tree_l = tmax l in 
+        let tmin_tree_r = tmin r in    
         if (return_int (tmax_tree_l )<= x && x <= return_int (tmin_tree_r)) then true 
         else if ( l=Leaf && r=Leaf) then true
         else false
-
 end
 
 
