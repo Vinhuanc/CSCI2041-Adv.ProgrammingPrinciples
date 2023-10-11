@@ -1,0 +1,129 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2709
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica-Bold;\f1\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww21120\viewh19680\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b\fs24 \cf0 \ul \ulc0 5.2 Modules\
+\
+
+\f1\b0 \ulnone Structure: simply a collection of definitions, done by binding the structure to a name\
+{{\NeXTGraphic Screenshot 2023-10-10 at 7.57.40 PM.png \width5440 \height1440 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}      \'93semi\'94- struct, a collection of definitions\
+\
+{{\NeXTGraphic Screenshot 2023-10-10 at 8.00.33 PM.png \width5580 \height3620 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}  Structure: how to use module, sig, end to structure a struct module. Output of OCaml has the form of module MyModule : sig \'85 end(indicates MyModule has been defined)\
+\
+Signature: a collection of specifications. Contains original definitions for variant types and exceptions. Type of a function\
+\
+Stacks: data structure stacks, like dishes, last one in, first one out\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2023-10-10 at 8.15.44 PM.png \width3220 \height4520 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬} {{\NeXTGraphic Screenshot 2023-10-10 at 8.16.51 PM.png \width3980 \height980 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}{{\NeXTGraphic Screenshot 2023-10-10 at 8.21.09 PM.png \width3720 \height1240 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}{{\NeXTGraphic Screenshot 2023-10-10 at 8.21.48 PM.png \width2460 \height720 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬} s\'92 stands for s prime(apostrophe){{\NeXTGraphic Screenshot 2023-10-10 at 8.23.45 PM.png \width4480 \height2520 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬} Java vs OCaml stacks\
+Example of pushing to stack:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2023-10-10 at 8.27.39 PM.png \width7000 \height1380 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0  use modules to manipulate a stack\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2023-10-10 at 8.27.58 PM.png \width4620 \height1380 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬} by writing ListStack.(e) ,  all the names from listStack becomes usable in e without needing to write the ListStack prefix each time\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2023-10-10 at 8.28.13 PM.png \width6400 \height2600 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 could use pipeline operator(reading left-to-right)\
+\
+List:\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2023-10-10 at 8.17.13 PM.png \width2940 \height4060 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬} List data structure as Stacks\
+\
+Module Syntax:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2023-10-10 at 8.38.49 PM.png \width3620 \height940 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+\
+
+\f0\b \ul 5.2.2 Scope and Open\
+
+\f1\b0 \ulnone \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2023-10-10 at 8.50.32 PM.png \width3700 \height2640 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 - After a module M has been defined, can access the names within it using the dot operator. However, the variable x isn\'92t available for access outside module.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2023-10-10 at 8.51.31 PM.png \width1680 \height1840 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0  By using Open, can access all definitions of a module into the current scope\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2023-10-10 at 8.53.54 PM.png \width7720 \height1520 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0  open as a module item. Open is another sort of module_item/module definitions, its possible to open one module inside another\
+\
+
+\f0\b \ul 5.2.3. Module Type Definitions
+\f1\b0 \ulnone \
+\
+ {{\NeXTGraphic Screenshot 2023-10-10 at 9.07.22 PM.png \width5540 \height5580 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}Writing module type definitions ourselves:\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2023-10-10 at 9.08.56 PM.png \width6800 \height9520 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0           {{\NeXTGraphic Screenshot 2023-10-10 at 9.10.18 PM.png \width5120 \height5440 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}             {{\NeXTGraphic Screenshot 2023-10-10 at 9.12.13 PM.png \width4300 \height980 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\b \cf0 \ul \ulc0 5.2.4 Module Type Semantics
+\f1\b0 \ulnone \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2023-10-10 at 9.23.30 PM.png \width2400 \height1160 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0   {{\NeXTGraphic Screenshot 2023-10-10 at 9.23.38 PM.png \width2680 \height1440 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬} M with X\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2023-10-10 at 9.23.30 PM.png \width2400 \height1160 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0        {{\NeXTGraphic Screenshot 2023-10-10 at 9.24.28 PM.png \width2580 \height1440 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬} M with Z\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2023-10-10 at 9.25.00 PM.png \width3040 \height1740 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0  Both X and Z\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+}

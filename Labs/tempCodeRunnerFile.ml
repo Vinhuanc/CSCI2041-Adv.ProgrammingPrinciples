@@ -1,0 +1,1 @@
+let _ = run_all_tests ()
