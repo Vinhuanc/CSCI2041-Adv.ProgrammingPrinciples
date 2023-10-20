@@ -1,0 +1,375 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2709
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fswiss\fcharset0 Helvetica-Bold;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww17940\viewh16380\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \
+
+\f1\b \ul 6.1 Specifications\
+
+\f0\b0 \ulnone Abstract: forget information, so that different things can be treated as the same\
+Specifications: intended behavior of abstraction. contract between a client of some unit of code and the implementer of that code\
+Audience of specification:\
+	- Clients: what they must guarantee(preconditions), what they can assume(postcondition)\
+	- Implementers: what they can assume(preconditions), what they must guarantee(postconditions)\
+- An implementation satisfies a specification if it provides the behavior described by the specification \
+Writing specifications:\
+	- sufficiently restrictive: rule out implementations that are useless to clients\
+	- sufficiently general: not ruling out implementations that are useful to clients\
+Abstraction by Specification: hide the details of implementations, reveal certain information about the module behavior without disclosing the details of the module implementations\
+	- locality: benefits of abstraction by specifications\
+	- modifiability: modules can be reimplemented without changing the implementation of other modules/functions\
+\
+
+\f1\b \ul 6.2 Function Documentation\
+
+\f0\b0 \ulnone {{\NeXTGraphic Screenshot 2023-10-18 at 10.20.56 AM.png \width9580 \height2860 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}
+\f1\b  
+\f0\b0 library specifications about the List.sort method\
+\
+Question\
+- is the client the input? Then the implementer is the function?\
+\
+
+\f1\b \ul 6.2.1 Returns Clause\
+
+\f0\b0 \ulnone How to specify sqr, a square-root function?\
+	1) Describe its results, and let it be the returns clause(specification that describes the result of a function call)( aka postcondition: describe a condition that holds after the function is called)\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2023-10-18 at 10.32.55 AM.png \width5700 \height600 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬} example of return clause.\
+\
+{{\NeXTGraphic Screenshot 2023-10-18 at 10.34.14 AM.png \width9480 \height480 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬} return clause for a find function\
+\
+
+\f1\b \ul 6.2.2 Requires Clause\
+
+\f0\b0 \ulnone - provide client with what inputs are allowed and what results will be for allowed inputs. Requires clause rules out bad inputs, aka precondition{{\NeXTGraphic Screenshot 2023-10-18 at 10.39.15 AM.png \width9840 \height680 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}  example of requires clause\
+\
+
+\f1\b \ul 6.2.3 Raises Clause\
+
+\f0\b0 \ulnone - raise exception when the expected input condition isn\'92t met\
+{{\NeXTGraphic Screenshot 2023-10-18 at 10.43.26 AM.png \width9580 \height700 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬} example of raise clause\
+\
+
+\f1\b \ul 6.2.4 Examples Clause\
+
+\f0\b0 \ulnone {{\NeXTGraphic Screenshot 2023-10-18 at 10.48.16 AM.png \width9160 \height660 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}
+\f1\b  
+\f0\b0 example of illustrative example as part of a specification\
+\
+
+\f1\b \ul 6.2.5 The Specification Game\
+
+\f0\b0 \ulnone - 
+\f1\b \ul \
+
+\f0\b0 \ulnone {{\NeXTGraphic Screenshot 2023-10-18 at 10.52.47 AM.png \width10420 \height1820 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}
+\f1\b \
+\
+\ul 6.2.6 Comments\
+
+\f0\b0 \ulnone - provides comments in the functions\
+\
+
+\f1\b \ul 6.3 Module Documentation\
+
+\f0\b0 \ulnone Data abstraction: a specification of operations on a set of values\
+Data Structure: an implementation of a data abstraction with particular representation\
+
+\f1\b \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 {{\NeXTGraphic Screenshot 2023-10-18 at 11.53.54 AM.png \width8480 \height7600 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}
+\f1\b  
+\f0\b0 example data abstraction/interface for a set of items of type \'91a\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2023-10-18 at 12.06.26 PM.png \width10080 \height4660 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0  implementation of sets from list with duplicates\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2023-10-18 at 12.06.53 PM.png \width10560 \height4560 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0  implementation of sets from lists without duplicates
+\f1\b \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+\ul 6.3.1 Abstraction Functions\ulnone \
+
+\f0\b0 - syntax:	 (** AF: comment *)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2023-10-18 at 12.36.35 PM.png \width5240 \height4180 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 AF: \'93the loss of information\'94, mapping from the space of concrete values to the abstract space. Example: ListSet
+\f1\b \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 {{\NeXTGraphic Screenshot 2023-10-18 at 12.39.18 PM.png \width9480 \height2340 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b \cf0  
+\f0\b0 example of abstract function of duplicated lists\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2023-10-18 at 12.41.52 PM.png \width10400 \height1880 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0  example of abstract function of no duplicate lists
+\f1\b \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+\ul 6.3.2 Implementing the Abstraction Function\
+
+\f0\b0 \ulnone  
+\f1\b \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 {{\NeXTGraphic Screenshot 2023-10-18 at 12.51.02 PM.png \width8940 \height3820 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0  half example of adding \'93\'94 to elements of the list. Rewatch {\field{\*\fldinst{HYPERLINK "https://cs3110.github.io/textbook/chapters/correctness/module_docs.html"}}{\fldrslt video}} of 6.3.2 section\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \
+\ul 6.3.3 Commutative Diagrams\ulnone \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 {{\NeXTGraphic Screenshot 2023-10-18 at 1.05.10 PM.png \width5640 \height4460 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2023-10-18 at 1.05.22 PM.png \width4180 \height500 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+\ul 6.3.4 Representation Invariants\ulnone \
+
+\f0\b0 - if the representation invariant holds for the input values, then it should hold for the output values, which is why its an invariant
+\f1\b \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 {{\NeXTGraphic Screenshot 2023-10-18 at 1.08.59 PM.png \width5960 \height3620 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2023-10-18 at 1.12.20 PM.png \width8460 \height1720 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b \cf0  
+\f0\b0 example of representation invariants of UniqListSet\
+\
+
+\f1\b \ul 6.3.5 Implementing the Representation Invariant\
+
+\f0\b0 \ulnone - helpful to write internal function that is used to check that the representation invariant holds of a given data item. By default, call this function rep_ok.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2023-10-18 at 1.19.34 PM.png \width8800 \height900 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0  representation invariant syntax\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2023-10-18 at 1.24.02 PM.png \width10260 \height7940 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0  example of implementation of Set that uses the same data representation as UniqListSets\
+\
+\
+\
+
+\f1\b \ul 6.7 Proving Correctness\
+
+\f0\b0 \ulnone Inductive reasoning: which evidence accumulates in support of a conclusion(correctness of the program)\
+Induction: proof technique\
+Deductive reasoning: proceed from premises and rules about logic to a valid conclusion\
+Correctness: means that the program produces the right output according to a specification\
+Specification of a factorial function: {{\NeXTGraphic Screenshot 2023-10-18 at 2.35.50 PM.png \width5640 \height640 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\
+\
+\
+
+\f1\b \ul 6.7.1 Equality
+\f0\b0 \ulnone \
+When are two expressions equal:\
+	1) when they are syntactically identical\
+	2) when they are semantically equivalent(produces the same value)\
+	Example: is 42 and 41+1 equal? Syntactically no, as they are different tokens. Semantically yes, both produce the value 42\
+	Example: is {{\NeXTGraphic Screenshot 2023-10-18 at 2.43.43 PM.png \width3080 \height320 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬} equal? Syntactically no, as they are different. Semantically yes, both produce a value that is the identity function.\
+	In a case that for all inputs two functions produces the same output, can consider the functions to be equal:   {{\NeXTGraphic Screenshot 2023-10-18 at 2.47.08 PM.png \width4840 \height400 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}(Axiom of Extensionality)\
+\
+\
+
+\f1\b \ul 6.7.2 Equational Reasoning
+\f0\b0 \ulnone \
+Example: {{\NeXTGraphic Screenshot 2023-10-18 at 3.05.50 PM.png \width3580 \height700 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬} from rules of OCaml evaluation that {{\NeXTGraphic Screenshot 2023-10-18 at 3.06.40 PM.png \width2420 \height300 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬} and that {{\NeXTGraphic Screenshot 2023-10-18 at 3.07.23 PM.png \width1780 \height320 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}{{\NeXTGraphic Screenshot 2023-10-18 at 3.07.30 PM.png \width1300 \height280 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\
+Which concludes to: {{\NeXTGraphic Screenshot 2023-10-18 at 3.08.36 PM.png \width4680 \height400 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\
+Simplifying the {{\NeXTGraphic Screenshot 2023-10-18 at 3.10.54 PM.png \width1060 \height360 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬} out of the equation, conclude that {{\NeXTGraphic Screenshot 2023-10-18 at 3.11.24 PM.png \width2920 \height380 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\
+\
+From the Youtube video: (by extracting h(h x) from both evaluated equations)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2023-10-18 at 3.14.05 PM.png \width6940 \height2360 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0    			another way of structuring the claim:   {{\NeXTGraphic Screenshot 2023-10-18 at 3.15.51 PM.png \width2600 \height2440 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\
+\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2023-10-18 at 3.25.35 PM.png \width9020 \height5980 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0  equational reasoning {\field{\*\fldinst{HYPERLINK "https://cs3110.github.io/textbook/chapters/correctness/proving_correctness.html"}}{\fldrslt example}}#1\
+ \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2023-10-18 at 3.28.22 PM.png \width7100 \height5040 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0  equational reasoning {\field{\*\fldinst{HYPERLINK "https://cs3110.github.io/textbook/chapters/correctness/proving_correctness.html"}}{\fldrslt example}} #2. Same equation as above\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2023-10-18 at 3.32.06 PM.png \width3200 \height3580 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0  equational reasoning {\field{\*\fldinst{HYPERLINK "https://cs3110.github.io/textbook/chapters/correctness/proving_correctness.html"}}{\fldrslt example}} #3. Same equation as above\
+\
+
+\f1\b TIPS/HINTS/SYNTAXES
+\f0\b0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2023-10-18 at 3.19.29 PM.png \width1360 \height1780 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 	{{\NeXTGraphic Screenshot 2023-10-18 at 3.21.24 PM.png \width5760 \height1000 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}trick: replace << with (    then add in missing-right hand parenthesis\
+\
+
+\f1\b \ul 6.7.3 Induction on Natural Numbers\
+
+\f0\b0 \ulnone \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2023-10-18 at 6.33.48 PM.png \width7960 \height6840 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0  induction proof syntax\
+\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2023-10-18 at 6.38.37 PM.png \width5980 \height4180 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 . {{\NeXTGraphic Screenshot 2023-10-18 at 6.35.36 PM.png \width4540 \height5980 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}   {{\NeXTGraphic Screenshot 2023-10-18 at 6.37.00 PM.png \width3360 \height4920 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬} example of inductive proof on an even function \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2023-10-18 at 6.43.07 PM.png \width6480 \height1380 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0  induction principle for natural numbers. Base case: prove P(0), Inductive case: P(K + 1), under the assumption of the inductive hypothesis P(k)\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2023-10-18 at 6.50.15 PM.png \width6380 \height780 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0  sumto function, sums the non-negative integers up to n\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2023-10-18 at 6.50.45 PM.png \width7980 \height9160 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0  example of using induction to prove the correctness of sumto\
+\
+
+\f1\b \ul 6.7.4 Programs as. Specifications\
+
+\f0\b0 \ulnone \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2023-10-18 at 7.15.54 PM.png \width7620 \height1280 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0    {{\NeXTGraphic Screenshot 2023-10-18 at 7.16.07 PM.png \width3060 \height2540 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}{{\NeXTGraphic Screenshot 2023-10-18 at 7.38.35 PM.png \width5040 \height600 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2023-10-18 at 7.35.35 PM.png \width8160 \height14120 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0  proof of tail-recursive function fact_tr is equivalent to fact function\
+\
+
+\f1\b \ul 6.7.5 Recursion vs Iteration\
+
+\f0\b0 \ulnone - we added an accumulator as an extra argument to make the factorial function tail recursive.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2023-10-18 at 7.56.14 PM.png \width5280 \height600 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0      recursive function, i(concrete value) and op(operator)     {{\NeXTGraphic Screenshot 2023-10-18 at 7.57.31 PM.png \width1500 \height940 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2023-10-18 at 8.00.58 PM.png \width3740 \height1400 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0  tail-recursive iterative same function as above. i(concrete value) and op(operator)   {{\NeXTGraphic Screenshot 2023-10-18 at 8.04.49 PM.png \width1940 \height1220 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2023-10-18 at 8.14.17 PM.png \width9220 \height13020 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0  {{\NeXTGraphic Screenshot 2023-10-18 at 8.17.34 PM.png \width3660 \height1040 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}prove that f_r and f_tr computes the same function. We will discover certain conditions that must hold of I and op to make the transformation to tail recursive to be correct\
+\
+Applying the above theorem to get a tail-recursive version of the sumto function:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2023-10-18 at 8.19.04 PM.png \width4780 \height1400 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0  recursive sumto function\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2023-10-18 at 8.19.23 PM.png \width5780 \height1060 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0  tail-recursive sumto function\
+\
+
+\f1\b \ul 6.7.6 Termination\
+
+\f0\b0 \ulnone Partial correctness: if a program terminates, then its output is correct\
+Total correctness: a program does terminate, and its output is correct\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+
+\f1\b \
+}
