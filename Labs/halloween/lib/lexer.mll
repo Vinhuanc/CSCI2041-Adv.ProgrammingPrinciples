@@ -11,3 +11,4 @@ rule token = parse
  | ['a'-'z' 'A'-'Z' '0'-'9']+ as word { WORD(word) }
  | _ { raise (SyntaxError ("Unexpected char: " ^ Lexing.lexeme lexbuf)) }
  | eof { EOF }
+

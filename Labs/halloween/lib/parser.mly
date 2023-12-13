@@ -8,3 +8,4 @@ main:
 line:
 | { [] }
 | WORD line { $1 :: $2 }
+
